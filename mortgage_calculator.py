@@ -1,10 +1,10 @@
 print("Welcome to Mortgage Calculator")
-#Mortgage Calculator. Will calculate PITI as well as total interest and principal paid for the entirety of the loan. An estimate of montly T&I can also be calculated.
-#inputs would be interest rate, loan amount, term, tax amount, insurane amount, and PMI amount.
 
-print("What would you like to calculate today? (Monthly PI/Total interest and principal paid for life of loan)")
+calculation_selection = str(input("What would you like to calculate today? (Enter '1' for Monthly PI / Enter '2' for Total principal and interest paid for life of loan): "))
+
+
 class Terms:
-    def __init__(self, input_interest_rate_percentage, input_term_in_years, input_loan_amount, input_total_tax_amount = 0, input_insurance_premium = 0, input_monthly_pmi_amount = 0):
+    def __init__(self, input_interest_rate_percentage, input_term_in_years, input_loan_amount, input_total_tax_amount, input_insurance_premium, input_monthly_pmi_amount):
         self.interest_rate = input_interest_rate_percentage
         self.term = input_term_in_years
         self.loan_amount = input_loan_amount
@@ -35,12 +35,23 @@ class Monthly_PI_Calculation:
 class Total_PI_Paid_for_Life_of_Loan:
     pass
 
-mortgage_one = Terms(2.5, 30, 260000)
+if calculation_selection == '1':
+    interest_rate = float(input("Enter the interest rate (in percentage): "))
+    term = int(input("Enter the term in years: "))
+    loan_amount = float(input("Enter the loan amount: "))
+    total_tax_amount = float(input("Enter the total yearly tax amount (optional, enter 0 if not applicable): "))
+    insurance_premium = float(input("Enter the total yearly insurance premium (optional, enter 0 if not applicable): "))
+    monthly_pmi_amount = float(input("Enter the monthly PMI (Private Mortgage Insurance) amount (optional, enter 0 if not applicable): "))
 
-mortgage_two = Terms(3.7, 20, 450000, 10000, 2500, 110)
+    user_terms = Terms(interest_rate, term, loan_amount, total_tax_amount, insurance_premium, monthly_pmi_amount)
 
-pi_calculation = Monthly_PI_Calculation()
+    pi_calculation = Monthly_PI_Calculation()
+    pi_calculation.calculation(user_terms)
 
-#pi_calculation.calculation(mortgage_one)
+elif calculation_selection == '2':
+    # Placeholder for Total_PI_Paid_for_Life_of_Loan calculation
+    print("Total Interest Paid for Life of Loan calculation will be implemented here in the future.")
 
-pi_calculation.calculation(mortgage_two)
+else:
+    print("Invalid choice. Please enter either '1' or '2'.")
+
