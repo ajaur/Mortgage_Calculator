@@ -1,10 +1,5 @@
-print("Welcome to Mortgage Calculator")
-
-calculation_selection = str(input("What would you like to calculate today? (Enter '1' for Monthly PI / Enter '2' for Total principal and interest paid for life of loan): "))
-
-
 class Terms:
-    def __init__(self, input_interest_rate_percentage, input_term_in_years, input_loan_amount, input_total_tax_amount, input_insurance_premium, input_monthly_pmi_amount):
+    def __init__(self, input_interest_rate_percentage, input_term_in_years, input_loan_amount, input_total_tax_amount = 0, input_insurance_premium = 0, input_monthly_pmi_amount = 0):
         self.interest_rate = input_interest_rate_percentage
         self.term = input_term_in_years
         self.loan_amount = input_loan_amount
@@ -32,26 +27,50 @@ class Monthly_PI_Calculation:
 
 
 
-class Total_PI_Paid_for_Life_of_Loan:
-    pass
+class Total_Interest_Paid_for_Life_of_Loan:
+    def __init__(self):
+        pass
+    def calculation(self, terms):
+        monthly_pi = ((terms.interest_rate / 100 / 12) * terms.loan_amount) / (1 - ((1 + (terms.interest_rate / 100 / 12)) ** (-(terms.term) * 12)))
+        total_payments = monthly_pi * (terms.term * 12)
+        total_interest_paid = total_payments - terms.loan_amount
+        rounded_total_interest_paid = round(total_interest_paid, 2)
+        
+        print("The total interest paid for the life of the loan is:", rounded_total_interest_paid)
 
-if calculation_selection == '1':
-    interest_rate = float(input("Enter the interest rate (in percentage): "))
-    term = int(input("Enter the term in years: "))
-    loan_amount = float(input("Enter the loan amount: "))
-    total_tax_amount = float(input("Enter the total yearly tax amount (optional, enter 0 if not applicable): "))
-    insurance_premium = float(input("Enter the total yearly insurance premium (optional, enter 0 if not applicable): "))
-    monthly_pmi_amount = float(input("Enter the monthly PMI (Private Mortgage Insurance) amount (optional, enter 0 if not applicable): "))
+while True: 
+    calculation_selection = str(input("Welcome to Mortgage Calculator. What would you like to calculate today? (Enter '1' for Monthly PI / Enter '2' for Total interest paid for life of loan): "))
 
-    user_terms = Terms(interest_rate, term, loan_amount, total_tax_amount, insurance_premium, monthly_pmi_amount)
+    if calculation_selection == '1':
+        interest_rate = float(input("Enter the interest rate (in percentage): "))
+        term = int(input("Enter the term in years: "))
+        loan_amount = float(input("Enter the loan amount: "))
+        total_tax_amount = float(input("Enter the total yearly tax amount (optional, enter 0 if not applicable): "))
+        insurance_premium = float(input("Enter the total yearly insurance premium (optional, enter 0 if not applicable): "))
+        monthly_pmi_amount = float(input("Enter the monthly PMI (Private Mortgage Insurance) amount (optional, enter 0 if not applicable): "))
 
-    pi_calculation = Monthly_PI_Calculation()
-    pi_calculation.calculation(user_terms)
+        user_terms = Terms(interest_rate, term, loan_amount, total_tax_amount, insurance_premium, monthly_pmi_amount)
 
-elif calculation_selection == '2':
-    # Placeholder for Total_PI_Paid_for_Life_of_Loan calculation
-    print("Total Interest Paid for Life of Loan calculation will be implemented here in the future.")
+        pi_calculation = Monthly_PI_Calculation()
+        pi_calculation.calculation(user_terms)
 
-else:
-    print("Invalid choice. Please enter either '1' or '2'.")
+    elif calculation_selection == '2':
+        interest_rate = float(input("Enter the interest rate (in percentage): "))
+        term = int(input("Enter the term in years: "))
+        loan_amount = float(input("Enter the loan amount: "))
+
+        user_terms = Terms(interest_rate, term, loan_amount)
+
+        total_interest = Total_Interest_Paid_for_Life_of_Loan()
+        total_interest.calculation(user_terms)
+    
+
+    else:
+        print("Invalid choice. Please enter either '1' or '2'.")
+
+    another_calculation = input("Would you like to make another calculation? (Enter 'yes' or 'no'): ")
+    if another_calculation.lower() != 'yes':
+        print("Thank you for using Mortgage Calculator. Goodbye!")
+        break
+
 
