@@ -19,9 +19,7 @@ class Monthly_PI_Calculation:
         rounded_monthly_ti = round(monthly_ti, 2)
         piti = round(rounded_monthly_pi + rounded_monthly_ti, 2)
         print("The monthly Principal and Interest Payment for this loan is", rounded_monthly_pi)
-        if monthly_ti == 0:
-            pass
-        else:
+        if monthly_ti != 0:
             print("Your estimated monthly Tax and Insurance payment is", rounded_monthly_ti, "Your total estimated monthly PITI payment is", piti)
         
 
@@ -39,7 +37,7 @@ class Total_Interest_Paid_for_Life_of_Loan:
         print("The total interest paid for the life of the loan is:", rounded_total_interest_paid)
 
 while True: 
-    calculation_selection = str(input("Welcome to Mortgage Calculator. What would you like to calculate today? (Enter '1' for Monthly PI / Enter '2' for Total interest paid for life of loan): "))
+    calculation_selection = input("Welcome to Mortgage Calculator. What would you like to calculate today? (Enter '1' for Monthly PI / Enter '2' for Total interest paid for life of loan): ")
 
     if calculation_selection == '1':
         interest_rate = float(input("Enter the interest rate (in percentage): "))
