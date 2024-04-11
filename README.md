@@ -25,7 +25,7 @@ Terms:
         self.pmi = input_monthly_pmi_amount
 ```
 
-#### Usage:
+#### Usage 1:
  ```javascript
     if calculation_selection == '1':
         interest_rate = float(input("Enter the interest rate (in percentage): "))
@@ -38,9 +38,24 @@ Terms:
         user_terms = Terms(interest_rate, term, loan_amount, total_tax_amount, insurance_premium, monthly_pmi_amount)
 ```
 
-#### Reponse:
-user_terms valiable is created which will be used when calling the mortgage calculator funtions.
+#### Reponse 1:
+user_terms valiable is created which will be used when calling the Monyhly PI Calculation funtion.
  ```javascript
      pi_calculation = Monthly_PI_Calculation()
         pi_calculation.calculation(user_terms)
+```
+#### Usage 2:
+ ```javascript
+elif calculation_selection == '2':
+        interest_rate = float(input("Enter the interest rate (in percentage): "))
+        term = int(input("Enter the term in years: "))
+        loan_amount = float(input("Enter the loan amount: "))
+
+        user_terms = Terms(interest_rate, term, loan_amount)
+```
+#### Reponse 2:
+user_terms valiable is created which will be used when calling the Total Interest Paid for Life of Loan funtion.
+ ```javascript
+     total_interest = Total_Interest_Paid_for_Life_of_Loan()
+        total_interest.calculation(user_terms)
 ```
