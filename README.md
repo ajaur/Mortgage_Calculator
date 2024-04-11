@@ -95,3 +95,8 @@ while True:
         pi_calculation = Monthly_PI_Calculation()
         pi_calculation.calculation(user_terms)
 ```
+#### Response:
+```javascript
+The monthly Principal and Interest Payment for this loan is 869.27
+Your estimated monthly Tax and Insurance payment is 416.67 Your total estimated monthly PITI payment is 1285.94
+```
