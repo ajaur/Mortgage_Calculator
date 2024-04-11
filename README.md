@@ -46,7 +46,7 @@ user_terms valiable is created which will be used when calling the Monyhly PI Ca
 ```
 #### Usage 2:
  ```javascript
-    elif calculation_selection == '2':
+     elif calculation_selection == '2':
         interest_rate = float(input("Enter the interest rate (in percentage): "))
         term = int(input("Enter the term in years: "))
         loan_amount = float(input("Enter the loan amount: "))
@@ -58,4 +58,22 @@ user_terms valiable is created which will be used when calling the Total Interes
  ```javascript
      total_interest = Total_Interest_Paid_for_Life_of_Loan()
         total_interest.calculation(user_terms)
+```
+### Monthly_PI_Calculation
+#### Description: 
+This Class holds the function to calculate the Monthly P&I, T&I and PITI.
+```javascript
+class Monthly_PI_Calculation:
+    def __init__(self):
+        pass
+
+    def calculation(self, terms):
+        monthly_pi = ((terms.interest_rate / 100 / 12) * terms.loan_amount) / (1 - ((1 + (terms.interest_rate / 100 / 12)) ** (-(terms.term) * 12)))
+        rounded_monthly_pi = round(monthly_pi, 2)
+        monthly_ti = terms.taxes / 12 + terms.insurance / 12 + terms.pmi
+        rounded_monthly_ti = round(monthly_ti, 2)
+        piti = round(rounded_monthly_pi + rounded_monthly_ti, 2)
+        print("The monthly Principal and Interest Payment for this loan is", rounded_monthly_pi)
+        if monthly_ti != 0:
+            print("Your estimated monthly Tax and Insurance payment is", rounded_monthly_ti, "Your total estimated monthly PITI payment is", piti)
 ```
