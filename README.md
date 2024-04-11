@@ -100,3 +100,36 @@ while True:
 The monthly Principal and Interest Payment for this loan is 869.27
 Your estimated monthly Tax and Insurance payment is 416.67 Your total estimated monthly PITI payment is 1285.94
 ```
+### Total_Interest_Paid_for_Life_of_Loan:
+#### Description:
+This Class holds the function to calculate the total interest that will be paid for the life of the loan.
+```javascript
+class Total_Interest_Paid_for_Life_of_Loan:
+    def __init__(self):
+        pass
+    def calculation(self, terms):
+        monthly_pi = ((terms.interest_rate / 100 / 12) * terms.loan_amount) / (1 - ((1 + (terms.interest_rate / 100 / 12)) ** (-(terms.term) * 12)))
+        total_payments = monthly_pi * (terms.term * 12)
+        total_interest_paid = total_payments - terms.loan_amount
+        rounded_total_interest_paid = round(total_interest_paid, 2)
+        
+        print("The total interest paid for the life of the loan is:", rounded_total_interest_paid)
+```
+#### Usage:
+```javascript
+while True: 
+    calculation_selection = input("Welcome to Mortgage Calculator. What would you like to calculate today? (Enter '1' for Monthly PI / Enter '2' for Total interest paid for life of loan): ")
+    elif calculation_selection == '2':
+            interest_rate = float(input("Enter the interest rate (in percentage): ")) #user input is 2.5
+            term = int(input("Enter the term in years: ")) #user input is 30
+            loan_amount = float(input("Enter the loan amount: ")) #user input is 220000
+    
+            user_terms = Terms(interest_rate, term, loan_amount)
+    
+            total_interest = Total_Interest_Paid_for_Life_of_Loan()
+            total_interest.calculation(user_terms)
+```
+#### Response:
+```javascript
+The total interest paid for the life of the loan is: 92935.75
+```
