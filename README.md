@@ -77,3 +77,21 @@ class Monthly_PI_Calculation:
         if monthly_ti != 0:
             print("Your estimated monthly Tax and Insurance payment is", rounded_monthly_ti, "Your total estimated monthly PITI payment is", piti)
 ```
+#### Usage:
+```javascript
+while True: 
+    calculation_selection = input("Welcome to Mortgage Calculator. What would you like to calculate today? (Enter '1' for Monthly PI / Enter '2' for Total interest paid for life of loan): ") #user input is 1
+
+    if calculation_selection == '1':
+        interest_rate = float(input("Enter the interest rate (in percentage): ")) #user input is 2.5
+        term = int(input("Enter the term in years: ")) #user input is 30
+        loan_amount = float(input("Enter the loan amount: ")) #user input is 220000
+        total_tax_amount = float(input("Enter the total yearly tax amount (optional, enter 0 if not applicable): ")) #user input is 4000
+        insurance_premium = float(input("Enter the total yearly insurance premium (optional, enter 0 if not applicable): ")) #user input is 1000
+        monthly_pmi_amount = float(input("Enter the monthly PMI (Private Mortgage Insurance) amount (optional, enter 0 if not applicable): ")) #user input is 0
+
+        user_terms = Terms(interest_rate, term, loan_amount, total_tax_amount, insurance_premium, monthly_pmi_amount)
+
+        pi_calculation = Monthly_PI_Calculation()
+        pi_calculation.calculation(user_terms)
+```
