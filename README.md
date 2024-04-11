@@ -14,6 +14,17 @@ This file contains 3 different Classes used for organizing the mortgage calculat
 ### Terms
 #### Description: 
 This Class houses the variables to be used in our 2 main calculations. These variables are unique terms that are input by the User for our individual mortgage. 
+ ```javascript
+Terms:
+    def __init__(self, input_interest_rate_percentage, input_term_in_years, input_loan_amount, input_total_tax_amount = 0, input_insurance_premium = 0, input_monthly_pmi_amount = 0):
+        self.interest_rate = input_interest_rate_percentage
+        self.term = input_term_in_years
+        self.loan_amount = input_loan_amount
+        self.taxes = input_total_tax_amount
+        self.insurance = input_insurance_premium
+        self.pmi = input_monthly_pmi_amount
+```
+
 #### Usage:
  ```javascript
     if calculation_selection == '1':
