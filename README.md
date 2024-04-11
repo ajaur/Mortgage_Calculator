@@ -96,9 +96,10 @@ while True:
         pi_calculation.calculation(user_terms)
 ```
 #### Response:
+```javascript
 The monthly Principal and Interest Payment for this loan is 869.27
 Your estimated monthly Tax and Insurance payment is 416.67 Your total estimated monthly PITI payment is 1285.94
-
+```
 ### Total_Interest_Paid_for_Life_of_Loan:
 #### Description:
 This Class holds the function to calculate the total interest that will be paid for the life of the loan.
@@ -129,5 +130,6 @@ while True:
             total_interest.calculation(user_terms)
 ```
 #### Response:
+```javascript
 The total interest paid for the life of the loan is: 92935.75
-
+```
