@@ -46,7 +46,7 @@ user_terms valiable is created which will be used when calling the Monyhly PI Ca
 ```
 #### Usage 2:
  ```javascript
-elif calculation_selection == '2':
+    elif calculation_selection == '2':
         interest_rate = float(input("Enter the interest rate (in percentage): "))
         term = int(input("Enter the term in years: "))
         loan_amount = float(input("Enter the loan amount: "))
